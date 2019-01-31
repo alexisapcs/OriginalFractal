@@ -16,9 +16,10 @@ public void draw()
 }
 public void mousePressed() {
 	background(#000000);
-	//fractal(width/2, height/2, 500);
+	fractal(width/2, height/2, 500);
+	/*
 	if ( mouseX < width*3/5 && mouseX > width*2/5 && mouseY < height*3/5 && mouseY > height*2/5)
-		fractal(width/2, height/2, 500);
+		stroke(255, (int)(Math.random()*200)+55, mouseX/4);
 	else if ( mouseX < width/2 && mouseY < height/2 ) 
 		fractal(0, 0, 500);
 	else if ( mouseY < height/2 ) 
@@ -27,15 +28,26 @@ public void mousePressed() {
 		fractal(width, height, 500);
 	else 
 		fractal(0, height, 500);
-}
-public void mouseDragged() {
-	stroke(255, (int)(Math.random()*200)+55, mouseX/4);
+	*/
 }
 
 public void fractal(float x, float y, float len) 
 {
 	//stroke(255, mouseX/4, (int)(Math.random()*200)+55);
-	stroke(255, (int)(Math.random()*200)+55, mouseX/4);
+	//stroke(255, (int)(Math.random()*200)+55, mouseX/4);
+	if ( mouseX < width*3/5 && mouseX > width*2/5 && mouseY < height*3/5 && mouseY > height*2/5)
+		stroke((int)(Math.random()*105)+150, 125, (int)(Math.random()*105)+150);
+	else if ( mouseX < width/2 && mouseY < height/2 ) 
+		//stroke((int)(Math.random()*200)+55, 170, mouseX/4);
+		stroke((int)(Math.random()*200)+55, (int)(Math.random()*200)+55, mouseX/4);
+	else if ( mouseY < height/2 ) 
+		stroke(255, (int)(Math.random()*200)+55, mouseX/4);
+	else if  ( mouseX > width/2 ) 
+		stroke((int)(Math.random()*200)+55, (int)(Math.random()*200)+55, mouseX/4);
+		
+	else 
+		stroke(255, (int)(Math.random()*200)+55, mouseX/4);
+		//stroke(255, (int)(Math.random()*200)+55, (int)(Math.random()*200)+55);
 	ellipse(x, y, len, len);
 	if ( len <= 50 ) {
 		
@@ -59,28 +71,11 @@ public void fractal(float x, float y, float len)
 		fractal( x, y + (len/2) , len/2.5 );
 		//fractal( x + (len/4) , y - (len/2) , len/2 );
 
+		
 		fractal( x - (len/2) , y - (len/2) , len/5.25 );
 		fractal( x + (len/2) , y + (len/2) , len/5.25 );
 		fractal( x + (len/2) , y - (len/2) , len/5.25 );
 		fractal( x - (len/2) , y + (len/2) , len/5.25 );
-		
-		//if in center
-		if ( mouseX < width*3/5 && mouseX > width*2/5 && mouseY < height*3/5 && mouseY > height*2/5) {
-			fractal( x - (len/2) , y - (len/2) , len/5.25 );
-			fractal( x + (len/2) , y + (len/2) , len/5.25 );
-			fractal( x + (len/2) , y - (len/2) , len/5.25 );
-			fractal( x - (len/2) , y + (len/2) , len/5.25 );
-		} else if ( mouseX < width/2 && mouseY < height/2 ) {
-			//fractal(0, 0, 500);
-		}
-		else if ( mouseY < height/2 ) {
-			//fractal(width, 0, 500);
-		}
-		else if  ( mouseX > width/2 ) {
-			//fractal(width, height, 500);
-		}
-		else {
-			//fractal(0, height, 500);
-		}
+
 	}
 }
